@@ -1,37 +1,33 @@
-public class Rectangulo extends Figura {
-    private double altura;
+
+public class Rectangulo extends Punto {
     private double base;
+    private double altura;
 
-    public Rectangulo(double altura, double base) {
-        this.base = base;
-        this.altura = altura;
+    @Override
+    public void LeerDatos(Scanner scanner) {
+        super.LeerDatos(scanner);
+        System.out.print("Ingrese la base: ");
+        this.base = scanner.nextDouble();
+        System.out.print("Ingrese la altura: ");
+        this.altura = scanner.nextDouble();
     }
 
-    public double getAltura() {
-        return this.altura;
+    @Override
+    public double calcularPerimetro() {
+        return 2 * (base + altura);
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
+    @Override
+    public double calcularArea() {
+        return base * altura;
     }
 
-    public double getBase() {
-        return this.base;
-    }
-
-    public void setBase(double base) {
-        this.base = base;
-    }
-
-    public void calcularPerimetro() {
-        this.Perimetro = (double)2.0F * this.base + (double)2.0F * this.altura;
-    }
-
-    public void calcularArea() {
-        this.Area = this.base * this.altura;
-    }
-
-    public String toString() {
-        return "Rectangulo";
+    @Override
+    public void imprimirAtributos() {
+        System.out.println("--- FIGURA: RECTÁNGULO ---");
+        super.imprimirAtributos();
+        System.out.println("Base: " + base + " | Altura: " + altura);
+        System.out.println("Perímetro: " + calcularPerimetro());
+        System.out.println("Área: " + calcularArea());
     }
 }
