@@ -1,5 +1,5 @@
 
-class Circulo extends Punto {
+public class Circulo extends Punto {
     private double radio;
 
     @Override
