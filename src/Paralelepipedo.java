@@ -1,4 +1,4 @@
-class Paralelepido extends Punto {
+public class Paralelepido extends Punto {
     private double largo;
     private double ancho;
     private double altura;
