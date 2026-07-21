@@ -6,4 +6,5 @@ interface Figura {
     double calcularArea();
     double calcularVolumen();
     void imprimirAtributos();
+    
 }
