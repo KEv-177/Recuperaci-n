@@ -1,45 +1,36 @@
-public class Cono extends Figura{
+public class Cono extends Punto {
     private double radio;
     private double altura;
     private double generatriz;
 
-    public Cono(double radio, double altura, double generatriz){
-        this.radio= radio;
-        this.altura= altura;
-        this.generatriz= generatriz;
-    }
-
-    public double getRadio() {
-        return radio;
-    }
-
-    public void setRadio(double radio) {
-        this.radio = radio;
-    }
-
-    public double getAltura() {
-        return altura;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    public double getGeneratriz() {
-        return generatriz;
-    }
-
-    public void setGeneratriz(double generatriz) {
-        this.generatriz = generatriz;
+    @Override
+    public void LeerDatos(Scanner scanner) {
+        super.LeerDatos(scanner);
+        System.out.print("Ingrese el radio de la base: ");
+        this.radio = scanner.nextDouble();
+        System.out.print("Ingrese la altura: ");
+        this.altura = scanner.nextDouble();
+        this.generatriz = Math.sqrt(Math.pow(radio, 2) + Math.pow(altura, 2));
     }
 
     @Override
-    public void calcularArea() {
-        this.Area = (this.radio * Math.PI * this.generatriz) + (Math.PI * this.radio);
+    public double calcularArea() {
+        double areaBase = Math.PI * Math.pow(radio, 2);
+        double areaLateral = Math.PI * radio * generatriz;
+        return areaBase + areaLateral;
     }
 
     @Override
-    public void calcularvolumen(){
-      this.Volumen = (double) 1/3.0F * Math.PI * this.radio * this.altura;
+    public double calcularVolumen() {
+        return (Math.PI * Math.pow(radio, 2) * altura) / 3;
+    }
+
+    @Override
+    public void imprimirAtributos() {
+        System.out.println("--- FIGURA: CONO ---");
+        super.imprimirAtributos();
+        System.out.println("Radio: " + radio + " | Altura: " + altura + " | Generatriz: " + generatriz);
+        System.out.println("Área Total: " + calcularArea());
+        System.out.println("Volumen: " + calcularVolumen());
     }
 }
