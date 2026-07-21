@@ -1,37 +1,40 @@
-public class Triangulo extends Figura {
-    private double altura;
+public class Triangulo extends Punto {
     private double base;
+    private double altura;
+    private double ladoA, ladoB, ladoC; // Para perímetro
 
-    public Triangulo(double altura, double base) {
-        this.altura = altura;
-        this.base = base;
+    @Override
+    public void LeerDatos(Scanner scanner) {
+        super.LeerDatos(scanner);
+        System.out.print("Ingrese el lado A: ");
+        this.ladoA = scanner.nextDouble();
+        System.out.print("Ingrese el lado B: ");
+        this.ladoB = scanner.nextDouble();
+        System.out.print("Ingrese la base: ");
+        this.base = scanner.nextDouble();
+        System.out.print("Ingrese la altura: ");
+        this.altura = scanner.nextDouble();
+        // Asumiendo triángulo escaleno, si se requiere equilátero se ajusta
+        this.ladoC = base; 
     }
 
-    public double getAltura() {
-        return this.altura;
+    @Override
+    public double calcularPerimetro() {
+        return ladoA + ladoB + ladoC;
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
+    @Override
+    public double calcularArea() {
+        return (base * altura) / 2;
     }
 
-    public double getBase() {
-        return this.base;
+    @Override
+    public void imprimirAtributos() {
+        System.out.println("--- FIGURA: TRIÁNGULO ---");
+        super.imprimirAtributos();
+        System.out.println("Lados: A=" + ladoA + ", B=" + ladoB + ", C=" + ladoC);
+        System.out.println("Base: " + base + " | Altura: " + altura);
+        System.out.println("Perímetro: " + calcularPerimetro());
+        System.out.println("Área: " + calcularArea());
     }
-
-    public void setBase(double base) {
-        this.base = base;
     }
-
-    public void calcularPerimetro() {
-        this.Perimetro = (double)2.0F * this.altura + this.base;
-    }
-
-    public void calcularArea() {
-        this.Area = this.base * this.altura / (double)2.0F;
-    }
-
-    public String toString() {
-        return "Triangulo";
-    }
-}
