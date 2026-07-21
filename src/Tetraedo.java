@@ -1,4 +1,4 @@
-class Tetraedro extends Punto {
+public class Tetraedro extends Punto {
     private double arista;
 
     @Override
