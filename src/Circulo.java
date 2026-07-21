@@ -1,27 +1,32 @@
-public class Circulo extends Figura{
+
+class Circulo extends Punto {
     private double radio;
 
-    public Circulo(double radio) {
-        this.radio = radio;
+    @Override
+    public void LeerDatos(Scanner scanner) {
+        super.LeerDatos(scanner);
+        System.out.print("Ingrese el radio: ");
+        this.radio = scanner.nextDouble();
     }
 
-    public double getRadio() {
-        return this.radio;
+    @Override
+    public double calcularPerimetro() {
+        return 2 * Math.PI * radio;
     }
 
-    public void setRadio(double radio) {
-        this.radio = radio;
+    @Override
+    public double calcularArea() {
+        return Math.PI * Math.pow(radio, 2);
     }
 
-    public void calcularPerimetro() {
-        this.Perimetro = Math.PI * this.radio / (double)2.0F;
-    }
-
-    public void calcularArea() {
-        this.Area = Math.PI * this.radio;
-    }
-
-    public String toString() {
-        return "Circulo";
+    @Override
+    public void imprimirAtributos() {
+        System.out.println("--- FIGURA: CÍRCULO ---");
+        super.imprimirAtributos();
+        System.out.println("Radio: " + radio);
+        System.out.println("Perímetro (Longitud): " + calcularPerimetro());
+        System.out.println("Área: " + calcularArea());
     }
 }
+
+
